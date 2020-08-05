@@ -1,0 +1,43 @@
+{include file="public/_head" /}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="animated fadeInDown">岁月本子</h1>
+        <p class="animated shake">一个还不成熟的，有梦想的，将来的程序员</p>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <div class="page-header h3">{$catename|default="文章"}列表</div>
+            <div class="article-list">
+                {volist name="articles" id="vo"}
+                <div class="article-list-item">
+                    <a href="{:url('index/article/article', ['id' => $vo.id])}" class="title">{$vo.title}</a>
+                    <div class="info">
+                        <span class="author">作者：{$vo.author}</span>-
+                        <span class="time">发布时间：{$vo.create_time}</span>-
+                        <span class="read">阅读：{$vo.click}</span>-
+                        <span class="comment">评论：{$vo.comment}</span>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+            <nav class="">
+                {$articles->render()|raw}
+            </nav>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="page-header h3">推荐文章</div>
+            <div class="topic-list">
+                {volist name="topArticles" id="vo"}
+                <div class="topic-list-item">
+                    <a href="{:url('index/article/article', ['id' => $vo.id])}" class="title">{$vo.title}</a>
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/_foot" /}
+</body>
+
+</html>
